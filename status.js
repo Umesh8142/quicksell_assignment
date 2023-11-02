@@ -5,7 +5,6 @@ function sortOnStatus(order) {
       const response = await fetch(endpoint);
       result = await response.json();
       let { tickets, users } = result;
-      console.log(tickets,users)
       const container = document.getElementById("main-container");
       while (container.firstChild) {
         container.removeChild(container.firstChild);
@@ -25,7 +24,6 @@ function sortOnStatus(order) {
         const box = document.createElement("div");
         box.className = "box";
         box.id = element[0];
-        console.log(element)
         box.innerHTML = `<div class="title-container">
                             <div class="title"><span class="material-symbols-outlined" style="color: ${element[3]};">
                                     ${element[1]}
