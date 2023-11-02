@@ -87,6 +87,12 @@ function sortOnPriority(order) {
           if (words.length > 1) {
             nickName += words[1][0].toUpperCase();
           }
+          let active;
+        if (username.available) {
+          active = "green";
+        } else {
+          active = "lightgray";
+        }
           if (username.id === element.userId) {
             card.innerHTML = `<div class="head">
                                   <span>${element.id}</span>
@@ -94,7 +100,7 @@ function sortOnPriority(order) {
                                   <p class="assignee" data-short-name="${nickName}" style="background-color:${
               color[username.id]
             }"></p>
-                                    <p id="online" style="background-color:green"></p>
+                                    <p id="online" style="background-color:${active}"></p>
                                     </div>
                               </div>
                               <div id="taskName">
