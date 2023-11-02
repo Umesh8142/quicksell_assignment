@@ -1,0 +1,250 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+.main-container {
+  display: flex;
+  height: 90vh;
+  width: 100vw;
+}
+.head{
+  color: rgb(115, 115, 115);
+}
+header {
+  width: 100vw;
+  height: 10vh;
+  padding: 20px;
+  background-color: white;
+}
+#display-btn {
+  box-shadow: 0px 0px 2px 1px lightgray;
+  border: 1px solid rgb(205, 205, 205);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 4px;
+}
+#display-btn:hover{
+  cursor: pointer;
+}
+
+.container {
+  min-height: 300px;
+  width: auto;
+  display: flex;
+  gap: 20px;
+}
+.box {
+  width: 500px;
+  background-color: #f4f5f7;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll; 
+}
+.box::-webkit-scrollbar {
+  display: none;
+}
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.title + .icon {
+  visibility: hidden;
+}
+.title-container > .title:hover + .icon {
+  visibility: visible;
+}
+.title:hover {
+  border-radius: 2px;
+  background-color: rgba(205, 205, 205, 0.274);
+}
+.box .title {
+  font-size: 14px;
+  color: #5e6c84;
+  flex-grow: 1;
+}
+#create-issue {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: #41526e;
+  font-size: 16px;
+  transition: 0.4s;
+  padding: 4px 0;
+  border-radius: 5px;
+  gap: 10px;
+}
+#create-issue:hover {
+  background-color: #c6c7ca5c;
+  cursor: pointer;
+}
+.item {
+  border: 2px solid #0052cc;
+  border-radius: 5px;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 10px;
+}
+.item > textarea,
+.item > textarea:focus {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.item > select:focus {
+  outline: none;
+}
+.item > select {
+  border: none;
+  background-color: transparent;
+  padding: 10px;
+  align-self: flex-start;
+}
+
+.card {
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 1px lightgray;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card .Task-Name {
+  font-weight: 600;
+  font-size: 16px;
+}
+.card .description {
+  font-size: 14px;
+}
+.head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.status {
+  font-size: 12px;
+  border: 1px solid rgb(216, 216, 216);
+  display: flex;
+  gap: 10px;
+  color: rgb(136, 135, 135);
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+.card .status-container {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+#name{
+  position: relative;
+}
+.assignee {
+  border: 1px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.assignee::before {
+  display: inline-block;
+  font-weight: 600;
+  color: white;
+  content: attr(data-short-name);
+  border-radius: 50%;
+  padding: 5px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: rgb(0, 255, 13); */
+}
+#dots {
+  width: 28px;
+  height: 25px;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  border: 1px solid rgb(206, 203, 203);
+  border-radius: 4px;
+  color: rgb(113, 112, 112);
+}
+#circle {
+  width: 12px;
+  height: 12px;
+  background-color: lightgray;
+  border-radius: 50%;
+}
+#taskName {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#online{
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  right: 0;
+  bottom: 0;
+  border: 2px solid white;
+}
+
+#addIcon {
+  display: flex;
+  align-items: center;
+}
+
+.sorting-card{
+  position: absolute;
+  top: 8vh;
+  left: 5vh;
+  width: 250px;
+  border: 1px solid rgb(186, 185, 185);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px 1px lightgray;
+  background-color: white;
+}
+.group,.order{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.group>select,.order>select{
+  width: 50%;
+  height: 30pxpx;
+  border-radius: 5px;
+  padding: 4px;
+}
+#sort-btn{
+  width: 30%;
+  border-radius: 4px;
+}
+#sort-btn:hover{
+  background-color: aqua;
+  cursor: pointer;
+}
