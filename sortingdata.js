@@ -24,7 +24,13 @@ sortBtn.addEventListener("click",()=>{
         sortOnPriority(order.value)
     }
 })
-
+let statusObj=[
+    ['Backlog','pending','Back Log','lightgray'],
+  ['Todo','radio_button_unchecked','To Do','skyblue'],
+   ['In progress','tonality','In Progress','orange'],
+    ['Done','check_circle',"Done",'dodgerblue'],
+    ['Cancelled','cancel','Cancelled','red']
+]
 
 let color = {
     "usr-1": "red",

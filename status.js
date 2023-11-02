@@ -5,6 +5,12 @@ function sortOnStatus(order) {
       const response = await fetch(endpoint);
       result = await response.json();
       let { tickets, users } = result;
+      console.log(tickets,users)
+      const container = document.getElementById("main-container");
+      while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
+      
       if (order == "priority")
         tickets.sort((a, b) => {
           return b.priority - a.priority;
@@ -14,10 +20,30 @@ function sortOnStatus(order) {
           return a.title.localeCompare(b.title);
         });
       }
-      const card=document.querySelectorAll(".card");
-      card.forEach(function(div) {
-        if(div)
-          div.parentNode.removeChild(div);
+
+      statusObj.forEach((element) => {
+        const box = document.createElement("div");
+        box.className = "box";
+        box.id = element[0];
+        console.log(element)
+        box.innerHTML = `<div class="title-container">
+                            <div class="title"><span class="material-symbols-outlined" style="color: ${element[3]};">
+                                    ${element[1]}
+                                </span> <span>${element[2]} </span>
+                                <span>1</span>
+                            </div>
+                            <div id="addIcon">
+                                <button id="create-issue">
+                                    <span class="material-symbols-outlined">
+                                        add
+                                    </span>
+                                </button>
+                                <span class="material-symbols-outlined icon">
+                                    more_horiz
+                                </span>
+                            </div>
+                        </div>`;
+        container.append(box);
       });
       tickets.forEach((element) => {
         const card = document.createElement("div");
