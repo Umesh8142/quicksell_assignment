@@ -33,6 +33,25 @@ function sortOnUser(order) {
         const box = document.createElement("div");
         box.className = "box";
         box.id = element.id;
+        box.addEventListener("dragenter", () => {
+          box.classList.add("active-box");
+        });
+        box.addEventListener("dragleave", () => {
+          box.classList.remove("active-box");
+        });
+        box.addEventListener("dragover", (e) => {
+          e.preventDefault();
+        });
+        box.addEventListener("drop", (e) => {
+          e.preventDefault();
+          if (box.id == "COMPLETED") {
+            activeDraggedEle.draggable = false;
+            e.status = "COMPLETED";
+          }
+          //  let child=activeDraggedEle.children[2].children[1];
+          //  child.innerText=box.children[0].children[0].innerText;
+          box.appendChild(activeDraggedEle);
+        });
         box.innerHTML = `<div class="title-container">
                             <div class="title">
                             <div id="name">
@@ -65,6 +84,10 @@ function sortOnUser(order) {
           status = "tonality";
         }
         card.className = "card";
+        card.addEventListener("dragstart", () => {
+          activeDraggedEle = card;
+        });
+        element.status !== "Done" && (card.draggable = "true");
         card.innerHTML = `<div class="head"><span>${element.id}</span>
         </div>
         <div id="taskName">

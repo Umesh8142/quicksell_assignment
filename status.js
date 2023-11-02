@@ -9,7 +9,6 @@ function sortOnStatus(order) {
       while (container.firstChild) {
         container.removeChild(container.firstChild);
       }
-      
       if (order == "priority")
         tickets.sort((a, b) => {
           return b.priority - a.priority;
@@ -24,6 +23,25 @@ function sortOnStatus(order) {
         const box = document.createElement("div");
         box.className = "box";
         box.id = element[0];
+        box.addEventListener("dragenter", () => {
+          box.classList.add("active-box");
+        });
+        box.addEventListener("dragleave", () => {
+          box.classList.remove("active-box");
+        });
+        box.addEventListener("dragover", (e) => {
+          e.preventDefault();
+        });
+        box.addEventListener("drop", (e) => {
+          e.preventDefault();
+          if (box.id == "COMPLETED") {
+            activeDraggedEle.draggable = false;
+            e.status = "COMPLETED";
+          }
+          //  let child=activeDraggedEle.children[2].children[1];
+          //  child.innerText=box.children[0].children[0].innerText;
+          box.appendChild(activeDraggedEle);
+        });
         box.innerHTML = `<div class="title-container">
                             <div class="title"><span class="material-symbols-outlined" style="color: ${element[3]};">
                                     ${element[1]}
@@ -46,6 +64,10 @@ function sortOnStatus(order) {
       tickets.forEach((element) => {
         const card = document.createElement("div");
         card.className = "card";
+        card.addEventListener("dragstart", () => {
+          activeDraggedEle = card;
+        });
+        element.status !== "Done" && (card.draggable = "true");
         users.forEach((username) => {
           let active;
           if (username.available) {
