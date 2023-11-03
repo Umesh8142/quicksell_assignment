@@ -22,7 +22,7 @@ function sortOnStatus(order) {
       statusObj.forEach((element) => {
         const box = document.createElement("div");
         box.className = "box";
-        box.id = element[0];
+        box.id = element[0].replace(" ","");
         box.addEventListener("dragenter", () => {
           box.classList.add("active-box");
         });
@@ -34,19 +34,21 @@ function sortOnStatus(order) {
         });
         box.addEventListener("drop", (e) => {
           e.preventDefault();
-          if (box.id == "COMPLETED") {
+          if (box.id == "Done") {
             activeDraggedEle.draggable = false;
-            e.status = "COMPLETED";
+            e.status = "Done";
           }
           //  let child=activeDraggedEle.children[2].children[1];
           //  child.innerText=box.children[0].children[0].innerText;
           box.appendChild(activeDraggedEle);
         });
         box.innerHTML = `<div class="title-container">
-                            <div class="title"><span class="material-symbols-outlined" style="color: ${element[3]};">
+                            <div class="title">
+                                  <span class="material-symbols-outlined" style="color: ${element[3]};">
                                     ${element[1]}
-                                </span> <span>${element[2]} </span>
-                                <span>1</span>
+                                  </span> 
+                                  <span>${element[2]} </span>
+                                <span id="count">0</span>
                             </div>
                             <div id="addIcon">
                                 <button id="create-issue">
@@ -108,8 +110,10 @@ function sortOnStatus(order) {
           }
         });
         let status = `${element.status}`;
-        const backLogContainer = document.getElementById(status);
-        backLogContainer.appendChild(card);
+        const Container = document.getElementById(status.replace(" ",""));
+        Container.appendChild(card);
+        const count=document.querySelector(`#${Container.id} #count`);
+        count.innerText=Container.children.length-1;
       });
     } catch (error) {
       console.log(error.message);

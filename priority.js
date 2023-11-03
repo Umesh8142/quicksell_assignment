@@ -40,9 +40,9 @@ function sortOnPriority(order) {
         });
         box.addEventListener("drop", (e) => {
           e.preventDefault();
-          if (box.id == "COMPLETED") {
+          if (box.id == "Done") {
             activeDraggedEle.draggable = false;
-            e.status = "COMPLETED";
+            e.status = "Done";
           }
           //  let child=activeDraggedEle.children[2].children[1];
           //  child.innerText=box.children[0].children[0].innerText;
@@ -54,7 +54,7 @@ function sortOnPriority(order) {
                             ${element[0]}
                             </span>
                                 <span>${element[1]}</span>
-                                <span>${box.children.length}</span>
+                                <span></span>
                             </div>
                             <div id="addIcon">
                                 <button id="create-issue">
@@ -119,8 +119,9 @@ function sortOnPriority(order) {
           }
         });
         let p = element.priority;
-        const backLogContainer = document.getElementById(priority[p][1]);
-        backLogContainer.appendChild(card);
+        const Container = document.getElementById(priority[p][1]);
+        Container.appendChild(card);
+        Container.children[0].children[0].children[2].innerText=Container.children.length-1;
       });
     } catch (error) {
       console.log(error.message);

@@ -44,9 +44,9 @@ function sortOnUser(order) {
         });
         box.addEventListener("drop", (e) => {
           e.preventDefault();
-          if (box.id == "COMPLETED") {
+          if (box.id == "Done") {
             activeDraggedEle.draggable = false;
-            e.status = "COMPLETED";
+            e.status = "Done";
           }
           //  let child=activeDraggedEle.children[2].children[1];
           //  child.innerText=box.children[0].children[0].innerText;
@@ -61,7 +61,7 @@ function sortOnUser(order) {
                               <p id="online" style="background-color:${active}"></p>
                               </div>
                                 <span>${element.name}</span>
-                                <span>${box.children.length}</span>
+                                <span id="count"></span>
                             </div>
                             <div id="addIcon">
                                 <button id="create-issue">
@@ -108,6 +108,7 @@ function sortOnUser(order) {
         </div>`;
 
         box.appendChild(card);
+        box.children[0].children[0].children[2].innerText=box.children.length-1;
       });
     } catch (error) {
       console.log(error.message);
